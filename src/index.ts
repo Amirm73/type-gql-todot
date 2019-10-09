@@ -15,6 +15,8 @@ import cors from "cors";
 
 // import { TodoResolver } from "./modules/todo/TodoResolver";
 import { RegisterResolver } from "./modules/user/Register";
+import { LoginResolver } from "./modules/user/Login";
+import { MeResolver } from "./modules/user/Me";
 
 @Resolver()
 export class helloResolver {
@@ -29,7 +31,9 @@ const main = async () => {
   const schema = await buildSchema({
     resolvers: [
       //   TodoResolver
-      RegisterResolver
+      RegisterResolver,
+      LoginResolver,
+      MeResolver
       //   helloResolver
     ]
   });
@@ -57,7 +61,7 @@ const main = async () => {
         client: redis as any
       }),
       name: "qid",
-      session: process.env.SESSION_SECRET,
+      secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
       cookie: {
