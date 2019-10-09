@@ -9,7 +9,7 @@ import {
 import { ObjectType, Field, ID } from "type-graphql";
 import * as bcrypt from "bcryptjs";
 import { v4 } from "uuid";
-import { IsEmailAlreadyExist } from "../modules/user/guards/isEmailAlreadyExist";
+import { IsEmailAlreadyExist } from "../modules/user/register/guards/isEmailAlreadyExist";
 // import { Todo } from "./Todo";
 @Entity()
 @ObjectType()

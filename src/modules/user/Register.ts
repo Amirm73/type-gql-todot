@@ -1,6 +1,6 @@
 import { Resolver, Mutation, Arg } from "type-graphql";
 import { User } from "../../entity/User";
-import { RegisterInput } from "./RegisterInput";
+import { RegisterInput } from "./register/RegisterInput";
 
 @Resolver(User)
 export class RegisterResolver {
