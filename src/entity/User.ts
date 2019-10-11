@@ -9,7 +9,6 @@ import {
 import { ObjectType, Field, ID } from "type-graphql";
 import * as bcrypt from "bcryptjs";
 import { v4 } from "uuid";
-import { IsEmailAlreadyExist } from "../modules/user/register/guards/isEmailAlreadyExist";
 // import { Todo } from "./Todo";
 @Entity()
 @ObjectType()
@@ -25,7 +24,6 @@ export class User extends BaseEntity {
   // @Column("text", { unique: true })
   @Column("text")
   @Field()
-  @IsEmailAlreadyExist({ message: "The email i already in use!" })
   email: string;
 
   @Column("varchar", { length: 255 })

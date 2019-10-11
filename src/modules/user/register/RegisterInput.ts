@@ -1,6 +1,7 @@
 import { Field, InputType } from "type-graphql";
 import { IsEmail, Length } from "class-validator";
 import { User } from "../../../entity/User";
+import { IsEmailAlreadyExist } from "./guards/isEmailAlreadyExist";
 
 @InputType()
 export class RegisterInput implements Partial<User> {
@@ -14,5 +15,6 @@ export class RegisterInput implements Partial<User> {
 
   @Field()
   @IsEmail()
+  @IsEmailAlreadyExist({ message: "The email i already in use!" })
   email: string;
 }

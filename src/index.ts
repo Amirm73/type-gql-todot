@@ -34,8 +34,10 @@ const main = async () => {
       RegisterResolver,
       LoginResolver,
       MeResolver
-      //   helloResolver
-    ]
+    ],
+    authChecker: ({ context: { req } }) => {
+      return !!req.session.userId;
+    }
   });
 
   const apolloServer = new ApolloServer({
