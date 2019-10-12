@@ -1,17 +1,15 @@
 import { Field, InputType } from "type-graphql";
 import { IsEmail, Length } from "class-validator";
-import { User } from "../../../entity/User";
 import { IsEmailAlreadyExist } from "./guards/isEmailAlreadyExist";
+// import { PasswordInput } from "src/modules/shared/PasswordInput";
+import { PasswordInput } from "../../shared/PasswordInput";
 
 @InputType()
-export class RegisterInput implements Partial<User> {
+// export class RegisterInput implements Partial<User> {
+export class RegisterInput extends PasswordInput {
   @Field()
   @Length(1, 255)
   name: string;
-
-  @Field()
-  @Length(1, 255)
-  password: string;
 
   @Field()
   @IsEmail()

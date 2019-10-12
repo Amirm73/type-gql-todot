@@ -1,5 +1,6 @@
 import { Resolver, Mutation, Arg, Ctx } from "type-graphql";
 import { User } from "../../entity/User";
+import * as bcrypt from "bcryptjs";
 import { redis } from "../../redis";
 // import bcrypt from "bcryptjs";
 
@@ -22,10 +23,10 @@ export class ChangePasswordResolver {
     if (!user) return null;
     await redis.del(forgotPasswordPrefix + token);
 
-    user.password = password;
+    user.password = await bcrypt.hash(password, 10);
     await user.save();
 
-    ctx.req.session!.userId = user.id; //login user with new pass
+    ctx.req.session!.userId = user.id; //login user again with new pass
 
     return user;
   }
