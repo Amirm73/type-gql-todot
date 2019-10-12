@@ -10,6 +10,8 @@ import { User } from "../../entity/User";
 import { RegisterInput } from "./register/RegisterInput";
 import { isAuth } from "../middleware/isAuth";
 import { logger } from "../middleware/logger";
+import { createConfirmationUrl } from "../utils/createConfirmationUrl";
+import { sendEmail } from "../utils/sendEmail";
 
 @Resolver(User)
 export class RegisterResolver {
@@ -27,11 +29,13 @@ export class RegisterResolver {
     name,
     password
   }: RegisterInput): Promise<User> {
-    const user = User.create({
+    const user = await User.create({
       email,
       name,
       password
     }).save();
+
+    sendEmail(email, await createConfirmationUrl(user.id));
     return user;
   }
 }

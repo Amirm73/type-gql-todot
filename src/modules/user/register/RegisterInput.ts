@@ -15,6 +15,6 @@ export class RegisterInput implements Partial<User> {
 
   @Field()
   @IsEmail()
-  @IsEmailAlreadyExist({ message: "The email i already in use!" })
+  @IsEmailAlreadyExist({ message: "The email is already in use!" })
   email: string;
 }

@@ -17,6 +17,7 @@ import cors from "cors";
 import { RegisterResolver } from "./modules/user/Register";
 import { LoginResolver } from "./modules/user/Login";
 import { MeResolver } from "./modules/user/Me";
+import { ConfirmUserResolver } from "./modules/user/ConfirmUserResolver";
 
 @Resolver()
 export class helloResolver {
@@ -33,7 +34,8 @@ const main = async () => {
       //   TodoResolver
       RegisterResolver,
       LoginResolver,
-      MeResolver
+      MeResolver,
+      ConfirmUserResolver
     ],
     authChecker: ({ context: { req } }) => {
       return !!req.session.userId;
