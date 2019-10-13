@@ -1,7 +1,6 @@
 import { Field, InputType } from "type-graphql";
 import { IsEmail, Length } from "class-validator";
 import { IsEmailAlreadyExist } from "./guards/isEmailAlreadyExist";
-// import { PasswordInput } from "src/modules/shared/PasswordInput";
 import { PasswordInput } from "../../shared/PasswordInput";
 
 @InputType()
