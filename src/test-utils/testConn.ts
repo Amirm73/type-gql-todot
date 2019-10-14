@@ -8,10 +8,9 @@ export const testConn = (drop: boolean = false) => {
     port: 5432,
     username: "amir",
     password: "1234",
-    database: "todo",
+    database: "todo-test",
     synchronize: drop,
     dropSchema: drop,
-    logging: true,
     entities: [__dirname + "/../entity/*.*"]
   });
 };

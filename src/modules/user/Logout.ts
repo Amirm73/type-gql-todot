@@ -9,10 +9,10 @@ export class LogoutResolver {
       ctx.req.session!.destroy(err => {
         if (err) {
           console.log(err);
-          rej(false);
+          return rej(false);
         }
         ctx.res.clearCookie("qid");
-        res(true);
+        return res(true);
       })
     );
   }

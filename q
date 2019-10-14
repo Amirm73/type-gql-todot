@@ -4,13 +4,14 @@
 
 #login.ts ! mark : Object is possibly 'undefined'.ts(2532)  : field was not implicit definition
 
-#CHROEM OK  FIREFOX NOK
+#CHROEM OK  FIREFOX NOK : include
 
-proper message for login.ts ifs
+#class validator :remove reinstall
+
+#min : number
 --------------
+login.ts:  when return res() of promise ?
+proper message for login.ts ifs
 
-class validator reinstall
-min
-when return res() of promise ?
 
 

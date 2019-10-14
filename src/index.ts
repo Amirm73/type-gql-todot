@@ -1,17 +1,13 @@
 import "reflect-metadata";
 import Express from "express";
 import { ApolloServer } from "apollo-server-express";
-import {
-  buildSchema,
-  Resolver,
-  Query,
-  formatArgumentValidationError
-} from "type-graphql";
+import { Resolver, Query, formatArgumentValidationError } from "type-graphql";
 import { createConnection } from "typeorm";
 import session from "express-session";
 import connectRedis from "connect-redis";
 import { redis } from "./redis";
 import cors from "cors";
+import { createSchema } from "./utils/createSchema";
 
 @Resolver()
 export class helloResolver {
@@ -22,13 +18,7 @@ export class helloResolver {
 }
 const main = async () => {
   await createConnection();
-
-  const schema = await buildSchema({
-    resolvers: [__dirname + "/modules/**/*.ts"],
-    authChecker: ({ context: { req } }) => {
-      return !!req.session.userId;
-    }
-  });
+  const schema = await createSchema();
 
   const apolloServer = new ApolloServer({
     schema,
