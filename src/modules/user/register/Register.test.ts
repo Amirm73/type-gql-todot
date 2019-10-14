@@ -2,6 +2,7 @@ import { Connection } from "typeorm";
 
 import { testConn } from "../../../test-utils/testConn";
 import { gCall } from "../../../utils/gCall";
+import faker from "faker";
 
 let conn: Connection;
 
@@ -32,17 +33,27 @@ const registerMutation = `
 
 describe("Register", () => {
   it("createUser", async () => {
-    console.log(
-      await gCall({
-        source: registerMutation,
-        variableValues: {
-          data: {
-            name: "amir",
-            email: "amiro@amir.com",
-            password: "amiro"
-          }
+    const user = {
+      name: faker.name.firstName(),
+      email: faker.internet.email(),
+      password: faker.internet.password()
+    };
+    const response = await gCall({
+      source: registerMutation,
+      variableValues: {
+        data: {
+          user
         }
-      })
-    );
+      }
+    });
+
+    await expect(response).toMatchObject({
+      data: {
+        register: {
+          name: user.name,
+          email: user.email
+        }
+      }
+    });
   });
 });
