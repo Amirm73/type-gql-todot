@@ -7,7 +7,7 @@ import faker from "faker";
 let conn: Connection;
 
 beforeAll(async () => {
-  conn = await testConn();
+  conn = await testConn(true);
 });
 
 afterAll(async () => {
@@ -15,13 +15,9 @@ afterAll(async () => {
 });
 
 const registerMutation = `
-  mutation {
+  mutation Register($data: RegisterInput!) {
   register(
-    data: {
-      name: "ddodooood"
-      password: "afbdcsdgfdg"
-      email: "amir8@amir.com"
-    }
+    data: $data
   ) {
     name
     email
@@ -41,13 +37,11 @@ describe("Register", () => {
     const response = await gCall({
       source: registerMutation,
       variableValues: {
-        data: {
-          user
-        }
+        data: user
       }
     });
 
-    await expect(response).toMatchObject({
+    expect(response).toMatchObject({
       data: {
         register: {
           name: user.name,

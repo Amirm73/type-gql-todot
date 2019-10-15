@@ -9,9 +9,10 @@
 #class validator :remove reinstall
 
 #min : number
+
+type gql snippet?
 --------------
 login.ts:  when return res() of promise ?
-proper message for login.ts ifs
-
+proper message for login.ts for ifs
 
 
