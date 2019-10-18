@@ -10,9 +10,26 @@
 
 #min : number
 
+proper err message for login.ts for ifs
+
+registerUser.ts
+Resolver()
+export class RegisterUserResolver extends BaseCreateUser {
+  
+    sendEmail(email, await createConfirmationUrl(user.id));
+}
+
+
+
+
+
+
+
+
+
+
+
 type gql snippet?
 --------------
 login.ts:  when return res() of promise ?
-proper message for login.ts for ifs
-
 

@@ -5,7 +5,7 @@ import { PasswordMixin } from "../../shared/PasswordInput";
 
 @InputType()
 // export class RegisterInput implements Partial<User> {
-export class RegisterInput extends PasswordMixin(class {}) {
+export class RegisterUserInput extends PasswordMixin(class {}) {
   @Field()
   @Length(1, 255)
   name: string;

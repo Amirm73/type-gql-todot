@@ -34,11 +34,6 @@ const main = async () => {
       {
         requestDidStart: () => ({
           didResolveOperation({ request, document }) {
-            /**
-             * This provides GraphQL query analysis to be able to react on complex queries to your GraphQL server.
-             * This can be used to protect your GraphQL servers against resource exhaustion and DoS attacks.
-             * More documentation can be found at https://github.com/ivome/graphql-query-complexity.
-             */
             const complexity = getComplexity({
               // Our built schema
               schema,

@@ -1,15 +1,16 @@
-import { Resolver, Mutation, Arg, Ctx } from "type-graphql";
+import { Resolver, Mutation, Arg, Ctx, UseMiddleware } from "type-graphql";
 import { User } from "../../entity/User";
 import * as bcrypt from "bcryptjs";
 import { redis } from "../../redis";
-// import bcrypt from "bcryptjs";
 
 import { forgotPasswordPrefix } from "../constants/redisPrefixies";
 import { ChangePasswordInput } from "./changePassword/ChangePasswordInput";
 import { MyContext } from "src/types/MyContext";
+import { isAuth } from "../middleware/isAuth";
 
 @Resolver()
 export class ChangePasswordResolver {
+  @UseMiddleware(isAuth)
   @Mutation(() => User, { nullable: true })
   async changePassword(
     @Arg("data")

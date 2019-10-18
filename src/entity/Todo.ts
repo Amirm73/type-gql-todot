@@ -2,10 +2,11 @@ import {
   Column,
   Entity,
   BaseEntity,
-  PrimaryGeneratedColumn
-  // ManyToOne
+  PrimaryGeneratedColumn,
+  ManyToOne
 } from "typeorm";
 import { ObjectType, Field, ID } from "type-graphql";
+import { User } from "./User";
 
 @Entity()
 @ObjectType()
@@ -20,5 +21,8 @@ export class Todo extends BaseEntity {
 
   @Column("varchar", { length: 255 })
   @Field()
-  status: string;
+  type: string;
+
+  @ManyToOne(() => User, user => user.todos)
+  user: User;
 }
