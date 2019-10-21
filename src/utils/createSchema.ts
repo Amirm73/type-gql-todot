@@ -10,9 +10,16 @@ import { CreateUserResolver } from "../modules/user/CreateUser";
 import { PictrureUoloadResolver } from "../modules/user/ProfilePicture";
 import { GetAllTodosResolver } from "../modules/todo/GetAllTodos";
 import { UpdateTodoResolver } from "../modules/todo/UpdateTodo";
-import { RegisterTodoResolver } from "../modules/todo/RegisterTodo";
 import { GetTodoResolver } from "../modules/todo/GetTodo";
 import { DeleteTodoResolver } from "../modules/todo/DeleteTodo";
+import { CreateTagResolver } from "../modules/tag/CreateTag";
+import { UpdateTagResolver } from "../modules/tag/UpdateTag";
+import { CreateTodoResolver } from "../modules/todo/CreateTodo";
+import { DeleteTagResolver } from "../modules/tag/DeleteTag";
+import { GetTodoTagsResolver } from "../modules/tag/GetTodoTags";
+import { AssignTodoTagResolver } from "../modules/todo/AssignTodoTag";
+import { UpdateTodoTagResolver } from "../modules/todo/UpdateTodoTags";
+import { BulkAssignTagsResolver } from "../modules/todo/BulkAssignTags";
 
 export const createSchema = () =>
   buildSchema({
@@ -28,11 +35,18 @@ export const createSchema = () =>
       PictrureUoloadResolver,
       GetAllTodosResolver,
       UpdateTodoResolver,
-      RegisterTodoResolver,
+      CreateTodoResolver,
       UpdateTodoResolver,
       GetAllTodosResolver,
       GetTodoResolver,
-      DeleteTodoResolver
+      DeleteTodoResolver,
+      CreateTagResolver,
+      UpdateTagResolver,
+      DeleteTagResolver,
+      GetTodoTagsResolver,
+      AssignTodoTagResolver,
+      UpdateTodoTagResolver,
+      BulkAssignTagsResolver
     ],
     authChecker: ({ context: { req } }) => {
       return !!req.session.userId;

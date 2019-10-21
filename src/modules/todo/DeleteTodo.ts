@@ -13,9 +13,6 @@ export class DeleteTodoResolver {
     @Ctx() ctx: MyContext,
     @Arg("todoId") todoId: string
   ): Promise<void> {
-    const todo = await Todo.findOne(todoId);
-    if (!todo) return undefined;
-
     const userId = ctx.req.session!.userId;
 
     return await getConnection()
