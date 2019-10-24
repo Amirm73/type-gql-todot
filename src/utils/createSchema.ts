@@ -16,7 +16,6 @@ import { CreateTagResolver } from "../modules/tag/CreateTag";
 import { UpdateTagResolver } from "../modules/tag/UpdateTag";
 import { CreateTodoResolver } from "../modules/todo/CreateTodo";
 import { DeleteTagResolver } from "../modules/tag/DeleteTag";
-import { GetTodoTagsResolver } from "../modules/tag/GetTodoTags";
 import { AssignTodoTagResolver } from "../modules/todo/AssignTodoTag";
 import { UpdateTodoTagResolver } from "../modules/todo/UpdateTodoTags";
 import { BulkAssignTagsResolver } from "../modules/todo/BulkAssignTags";
@@ -43,7 +42,6 @@ export const createSchema = () =>
       CreateTagResolver,
       UpdateTagResolver,
       DeleteTagResolver,
-      GetTodoTagsResolver,
       AssignTodoTagResolver,
       UpdateTodoTagResolver,
       BulkAssignTagsResolver,
