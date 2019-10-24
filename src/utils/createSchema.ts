@@ -20,6 +20,7 @@ import { GetTodoTagsResolver } from "../modules/tag/GetTodoTags";
 import { AssignTodoTagResolver } from "../modules/todo/AssignTodoTag";
 import { UpdateTodoTagResolver } from "../modules/todo/UpdateTodoTags";
 import { BulkAssignTagsResolver } from "../modules/todo/BulkAssignTags";
+import { CreateUser } from "./singleCreateResolver";
 
 export const createSchema = () =>
   buildSchema({
@@ -31,7 +32,6 @@ export const createSchema = () =>
       LoginResolver,
       LogoutResolver,
       RegisterUserResolver,
-      CreateUserResolver,
       PictrureUoloadResolver,
       GetAllTodosResolver,
       UpdateTodoResolver,
@@ -46,7 +46,9 @@ export const createSchema = () =>
       GetTodoTagsResolver,
       AssignTodoTagResolver,
       UpdateTodoTagResolver,
-      BulkAssignTagsResolver
+      BulkAssignTagsResolver,
+      CreateUserResolver,
+      CreateUser
     ],
     authChecker: ({ context: { req } }) => {
       return !!req.session.userId;

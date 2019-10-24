@@ -1,8 +1,8 @@
 import { User } from "../../entity/User";
 import { RegisterUserInput } from "./register/RegisterUserInput";
-import { createBaseResolver } from "../../utils/createBaseResolver";
+import { createSingleResolver } from "../../utils/createSingleResolver";
 
-export const CreateUserResolver = createBaseResolver(
+export const CreateUserResolver = createSingleResolver(
   "User",
   User,
   RegisterUserInput,
