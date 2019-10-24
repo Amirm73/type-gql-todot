@@ -18,7 +18,7 @@ export class Todo extends BaseEntity {
   @Field()
   name: string;
 
-  @Column("varchar", { length: 255 })
+  @Column("varchar", { length: 255, nullable: true })
   @Field()
   status: string;
 }
