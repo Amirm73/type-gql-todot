@@ -13,7 +13,6 @@ export class GetTodoResolver {
     @Arg("todoId") todoId: string
   ): Promise<Todo | undefined> {
     const userId = ctx.req.session!.userId;
-
     const todo = await getRepository(Todo)
       .createQueryBuilder("todo")
       .where("todo.user = :userId AND todo.id = :todoId", { userId, todoId })

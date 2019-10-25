@@ -8,7 +8,3 @@ export const CreateUserResolver = createSingleResolver(
   RegisterUserInput,
   User
 );
-// @Resolver()
-// export class CreateUserResolver extends BaseCreateUser {
-//     sendEmail(email, await createConfirmationUrl(user.id));
-// }

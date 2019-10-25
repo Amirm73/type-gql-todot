@@ -25,8 +25,8 @@ export function createDependentResolver<
   ctxId?: string,
   middleware?: Middleware<any>[]
 ) {
-  @Resolver({ isAbstract: true })
-  abstract class DependentBaseResolver {
+  @Resolver()
+  class DependentBaseResolver {
     @Mutation(() => returnType, { name: `create${suffix}` })
     @UseMiddleware(...(middleware || []))
     async create(
