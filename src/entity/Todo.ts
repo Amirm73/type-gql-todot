@@ -24,13 +24,13 @@ export class Todo extends BaseEntity {
   name: String;
 
   @Column("varchar", { length: 255, nullable: true })
-  @Field()
+  @Field(() => Type)
   type: Type;
 
   @ManyToOne(() => User, user => user.todos)
   user: User;
 
-  @ManyToMany(() => Tag, tag => tag.todos)
+  @ManyToMany(() => Tag, tag => tag.todos, { nullable: true })
   @JoinTable()
   tags: Tag[];
 }

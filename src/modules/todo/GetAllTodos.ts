@@ -20,3 +20,7 @@ export class GetAllTodosResolver {
     return todos;
   }
 }
+// @FieldResolver()
+// async name(@Root() parent: Todo) {
+//   return parent.name;
+// }

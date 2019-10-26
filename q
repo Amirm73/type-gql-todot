@@ -41,4 +41,18 @@ login.ts:  when return res() of promise ?
 
 https://github.com/MichalLytek/type-graphql/issues/314
 
+------------------------------------------
+doc notes:
+1: RelationColumn
+@ManyToOne(type => User)
+  author: User;
+  @RelationColumn()
+  authorId: number;
+
+2 : throw error
+if(!User){
+    throw new Error('not found')
+}
+
+
 

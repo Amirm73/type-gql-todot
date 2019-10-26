@@ -34,13 +34,13 @@ export function createDependentResolver<
       @Arg("data", () => inputType) data: any
     ) {
       if (!depId && ctxId) depId = ctx.req.session![ctxId];
-      entity.create(data).save();
+      const object = await entity.create(data).save();
+
       await createQueryBuilder()
         .relation(depType, depField)
         .of(depId)
-        .add(entity);
-
-      return entity;
+        .add(object);
+      return object;
     }
   }
 

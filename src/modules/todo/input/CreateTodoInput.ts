@@ -8,6 +8,6 @@ export class CreateTodoInput {
   @Length(1, 255)
   name: string;
 
-  @Field()
+  @Field(() => Type)
   type: Type;
 }

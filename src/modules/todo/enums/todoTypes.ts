@@ -1,9 +1,9 @@
 import { registerEnumType } from "type-graphql";
 
 export enum Type {
-  Todo,
-  Doing,
-  Done
+  Todo = "Todo",
+  Doing = "Doing",
+  Done = "Done"
 }
 
 registerEnumType(Type, {
