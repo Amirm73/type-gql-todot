@@ -19,7 +19,7 @@ export class Todo extends BaseEntity {
   @Field(() => ID)
   id: string;
 
-  @Column("varchar", { length: 255 })
+  @Column("varchar", { length: 255, nullable: true })
   @Field()
   name: String;
 
@@ -30,7 +30,7 @@ export class Todo extends BaseEntity {
   @ManyToOne(() => User, user => user.todos)
   user: User;
 
-  @ManyToMany(() => Tag, tag => tag.todos, { nullable: true })
+  @ManyToMany(() => Tag, tag => tag.todos)
   @JoinTable()
   tags: Tag[];
 }
