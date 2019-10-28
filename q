@@ -72,3 +72,4 @@ export class GetUsersResolver {
 ---------------------------------------------------
 libs:
 https://www.npmjs.com/package/graphql-fields
+https://gitter.im/type-graphql/Lobby
