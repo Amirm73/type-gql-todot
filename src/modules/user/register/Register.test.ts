@@ -15,7 +15,7 @@ afterAll(async () => {
 });
 
 const registerMutation = `
-  mutation Register($data: RegisterInput!) {
+  mutation RegisterUserResolver($data: RegisterUserInput!) {
   register(
     data: $data
   ) {
@@ -24,11 +24,10 @@ const registerMutation = `
     password
   }
 }
-
 `;
 
 describe("Register", () => {
-  it("createUser", async () => {
+  it("create a user", async () => {
     const user = {
       name: faker.name.firstName(),
       email: faker.internet.email(),
