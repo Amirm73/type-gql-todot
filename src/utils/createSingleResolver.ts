@@ -7,24 +7,25 @@ import {
 } from "type-graphql";
 import { Middleware } from "type-graphql/interfaces/Middleware";
 
-export function createBaseResolver<T extends ClassType, X extends ClassType>(
+export function createSingleResolver<T extends ClassType, X extends ClassType>(
   suffix: string,
   returnType: T,
   inputType: X,
   entity: any,
-  middleware?: Middleware<any>[],
-  ...functions: Function[]
+  middleware?: Middleware<any>[]
 ) {
   @Resolver({ isAbstract: true })
-  abstract class BaseResolver {
+  abstract class SingleResolver {
     @Mutation(() => returnType, { name: `create${suffix}` })
     @UseMiddleware(...(middleware || []))
     async create(@Arg("data", () => inputType) data: any) {
-      entity.cerate(data).save();
-      if (functions) functions.forEach(func => func());
+      entity.create(data).save();
       return entity;
     }
   }
 
-  return BaseResolver;
+  return SingleResolver;
 }
+
+// if (functions) functions.forEach(func => func());
+// functions: (email: string, url: string)=> Promise<void>,

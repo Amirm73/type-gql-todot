@@ -11,10 +11,12 @@ export class GetAllTodosResolver {
   @Query(() => [Todo], { nullable: true })
   async getAllTodos(@Ctx() ctx: MyContext): Promise<Todo[] | undefined> {
     const userId = ctx.req.session!.userId;
-    return await getConnection()
+    const todos = await getConnection()
       .createQueryBuilder()
       .relation(User, "todos")
       .of(userId)
       .loadMany();
+    console.log(todos);
+    return todos;
   }
 }
