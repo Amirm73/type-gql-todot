@@ -10,6 +10,7 @@ import {
 import { ObjectType, Field, ID } from "type-graphql";
 import { User } from "./User";
 import { Tag } from "./Tag";
+import { Type } from "../modules/todo/enums/todoTypes";
 
 @Entity()
 @ObjectType()
@@ -18,13 +19,13 @@ export class Todo extends BaseEntity {
   @Field(() => ID)
   id: string;
 
-  @Column("varchar", { length: 255 })
+  @Column("varchar", { length: 255, nullable: true })
   @Field()
   name: String;
 
   @Column("varchar", { length: 255, nullable: true })
-  @Field()
-  type: string;
+  @Field(() => Type)
+  type: Type;
 
   @ManyToOne(() => User, user => user.todos)
   user: User;

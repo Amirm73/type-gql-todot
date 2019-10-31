@@ -25,8 +25,8 @@ export function createDependentResolver<
   ctxId?: string,
   middleware?: Middleware<any>[]
 ) {
-  @Resolver({ isAbstract: true })
-  abstract class DependentBaseResolver {
+  @Resolver()
+  class DependentBaseResolver {
     @Mutation(() => returnType, { name: `create${suffix}` })
     @UseMiddleware(...(middleware || []))
     async create(
@@ -34,13 +34,13 @@ export function createDependentResolver<
       @Arg("data", () => inputType) data: any
     ) {
       if (!depId && ctxId) depId = ctx.req.session![ctxId];
-      entity.create(data).save();
+      const object = await entity.create(data).save();
+
       await createQueryBuilder()
         .relation(depType, depField)
         .of(depId)
-        .add(entity);
-
-      return entity;
+        .add(object);
+      return object;
     }
   }
 

@@ -12,20 +12,24 @@
 
 #insert voilate foriegn key: object is in ralation with another object,should create new object
 ..............................
+errors:
+?Cannot return null for non-nullable field Todo.name.
+#return null object or sth like @Culumn(  {select:false})
 
 
-proper err message for login.ts for ifs
+?import { CreateTodoResolver } from "src/modules/todo/CreateTodo"; not found!
+#import { CreateTodoResolver } from "../modules/todo/CreateTodo";
 
-registerUser.ts
+
+?"syntax error at or near \".\
+#was returning null
+
+?registerUser.ts
 Resolver()
 export class RegisterUserResolver extends BaseCreateUser {
-  
     sendEmail(email, await createConfirmationUrl(user.id));
 }
-
-import { CreateTodoResolver } from "src/modules/todo/CreateTodo"; not found!
-import { CreateTodoResolver } from "../modules/todo/CreateTodo";
-
+#callback[0](backtick arg[0]) 
 --------------------------------------------
 vim paste without new line
 
@@ -41,4 +45,30 @@ login.ts:  when return res() of promise ?
 
 https://github.com/MichalLytek/type-graphql/issues/314
 
+------------------------------------------
+doc notes:
+1: RelationColumn
+@ManyToOne(type => User)
+  author: User;
+  @RelationColumn()
+  authorId: number;
 
+2 : throw error
+if(!User){
+    throw new Error('not found')
+}
+
+
+@Resolver(User)
+export class GetUsersResolver {
+  @Query(() => [User], { nullable: true })
+  async getAllUsers(@Info() data: any): Promise< any> {
+    ion"]["selectionSet"]["selections"]["selectionSet"];
+    const sets = data["operation"]["selectionSet"]["selections"];
+    console.log(sets);
+  }
+}
+
+---------------------------------------------------
+libs:
+https://www.npmjs.com/package/graphql-fields
