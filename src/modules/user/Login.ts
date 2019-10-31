@@ -20,7 +20,6 @@ export class LoginResolver {
     if (!user.confirmed) return null;
 
     ctx.req.session!.userId = user.id;
-    //Object is possibly 'undefined'.ts(2532)
     return user;
   }
 }

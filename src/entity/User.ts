@@ -3,13 +3,14 @@ import {
   Entity,
   BaseEntity,
   PrimaryGeneratedColumn,
-  BeforeInsert
-  // OneToMany
+  BeforeInsert,
+  OneToMany
 } from "typeorm";
 import { ObjectType, Field, ID } from "type-graphql";
 import * as bcrypt from "bcryptjs";
 import { v4 } from "uuid";
-// import { Todo } from "./Todo";
+import { Todo } from "./Todo";
+
 @Entity()
 @ObjectType()
 export class User extends BaseEntity {
@@ -30,8 +31,11 @@ export class User extends BaseEntity {
   @Field()
   password: string;
 
-  // @OneToMany(() => Todo, () => Todo.user)
-  // todos: Todo[];
+  @Column("bool", { default: false })
+  confirmed: boolean;
+
+  @OneToMany(() => Todo, todo => todo.user, { cascade: true })
+  todos: Todo[];
 
   @BeforeInsert()
   addId() {
@@ -42,7 +46,4 @@ export class User extends BaseEntity {
   async hashPasswordBeforeInsert() {
     this.password = await bcrypt.hash(this.password, 10);
   }
-
-  @Column("bool", { default: false })
-  confirmed: boolean;
 }
