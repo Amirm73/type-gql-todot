@@ -20,17 +20,23 @@ export class Todo extends BaseEntity {
   id: string;
 
   @Column("varchar", { length: 255, nullable: true })
-  @Field()
+  @Field(() => String, { nullable: true })
   name: String;
 
   @Column("varchar", { length: 255, nullable: true })
-  @Field(() => Type)
+  @Field(() => Type, { nullable: true })
   type: Type;
 
   @ManyToOne(() => User, user => user.todos)
   user: User;
 
   @ManyToMany(() => Tag, tag => tag.todos)
+  // @Field(() => [Tag], { nullable: true })
   @JoinTable()
   tags: Tag[];
+
+  @Field(() => [Tag], { description: "performance", nullable: true })
+  get Tags(): Tag[] | null {
+    return this.tags;
+  }
 }

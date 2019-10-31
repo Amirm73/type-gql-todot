@@ -15,7 +15,7 @@ export class Tag extends BaseEntity {
   @Field(() => ID)
   id: string;
 
-  @Column("varchar", { length: 255 })
+  @Column("varchar", { length: 255, nullable: true })
   @Field()
   desc: string;
 

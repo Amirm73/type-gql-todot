@@ -38,7 +38,7 @@ export class User extends BaseEntity {
   @Column("bool", { default: false })
   confirmed: boolean;
 
-  @OneToMany(() => Todo, todo => todo.user, { cascade: true })
+  @OneToMany(() => Todo, todo => todo.user)
   todos: Todo[];
 
   @BeforeInsert()
