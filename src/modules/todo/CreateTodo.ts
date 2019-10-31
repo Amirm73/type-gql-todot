@@ -1,16 +1,18 @@
-import { TodoInput } from "./input/TodoInput";
-import { Resolver, Mutation, Arg, Ctx } from "type-graphql";
+import { CreateTodoInput } from "./input/CreateTodoInput";
+import { Resolver, Mutation, Arg, Ctx, UseMiddleware } from "type-graphql";
 import { User } from "../../entity/User";
 import { MyContext } from "../../types/MyContext";
 import { Todo } from "../../entity/Todo";
-import { getConnection } from "typeorm";
+import { createQueryBuilder } from "typeorm";
+import { isAuth } from "../middleware/isAuth";
 
 @Resolver(Todo)
-export class RegisterTodoResolver {
+export class CreateTodoResolver {
+  @UseMiddleware(isAuth)
   @Mutation(() => Todo)
   async createTodo(
     @Ctx() ctx: MyContext,
-    @Arg("data") { type, name }: TodoInput
+    @Arg("data") { type, name }: CreateTodoInput
   ): Promise<Todo> {
     const userId = ctx.req.session!.userId;
     const todo = await Todo.create({
@@ -18,11 +20,10 @@ export class RegisterTodoResolver {
       name
     }).save();
 
-    await getConnection()
-      .createQueryBuilder()
+    await createQueryBuilder()
       .relation(User, "todos")
-      .of(userId) // you can use just post id as well
-      .add(todo); // you can use just category id as well
+      .of(userId)
+      .add(todo);
 
     return todo;
   }

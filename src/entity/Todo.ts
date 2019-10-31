@@ -3,10 +3,13 @@ import {
   Entity,
   BaseEntity,
   PrimaryGeneratedColumn,
-  ManyToOne
+  ManyToOne,
+  ManyToMany,
+  JoinTable
 } from "typeorm";
 import { ObjectType, Field, ID } from "type-graphql";
 import { User } from "./User";
+import { Tag } from "./Tag";
 
 @Entity()
 @ObjectType()
@@ -17,7 +20,7 @@ export class Todo extends BaseEntity {
 
   @Column("varchar", { length: 255 })
   @Field()
-  name: string;
+  name: String;
 
   @Column("varchar", { length: 255, nullable: true })
   @Field()
@@ -25,4 +28,8 @@ export class Todo extends BaseEntity {
 
   @ManyToOne(() => User, user => user.todos)
   user: User;
+
+  @ManyToMany(() => Tag, tag => tag.todos)
+  @JoinTable()
+  tags: Tag[];
 }

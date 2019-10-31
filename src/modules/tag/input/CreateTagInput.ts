@@ -2,11 +2,8 @@ import { Field, InputType } from "type-graphql";
 import { Length } from "class-validator";
 
 @InputType()
-export class TodoInput {
+export class TagInput {
   @Field()
   @Length(1, 255)
-  name: string;
-
-  @Field()
-  type: string;
+  desc: string;
 }

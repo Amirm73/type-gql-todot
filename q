@@ -10,6 +10,10 @@
 
 #min : number
 
+#insert voilate foriegn key: object is in ralation with another object,should create new object
+..............................
+
+
 proper err message for login.ts for ifs
 
 registerUser.ts
@@ -19,17 +23,22 @@ export class RegisterUserResolver extends BaseCreateUser {
     sendEmail(email, await createConfirmationUrl(user.id));
 }
 
+import { CreateTodoResolver } from "src/modules/todo/CreateTodo"; not found!
+import { CreateTodoResolver } from "../modules/todo/CreateTodo";
 
+--------------------------------------------
+vim paste without new line
 
-
-
-
-
-
-
-
+const tags = await Tag.findByIds(tagIds);
+const todo = await Todo.findOneOrFail(todoId);
+todo.tags = tags;
+return await Todo.save(todo);
 
 type gql snippet?
 --------------
 login.ts:  when return res() of promise ?
+
+
+https://github.com/MichalLytek/type-graphql/issues/314
+
 
