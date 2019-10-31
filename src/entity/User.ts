@@ -31,13 +31,14 @@ export class User extends BaseEntity {
   @Field({ nullable: true })
   email: string;
 
-  @Column("varchar", { length: 255 })
+  @Column("varchar", { length: 255, select: false })
+  @Field()
   password: string;
 
   @Column("bool", { default: false })
   confirmed: boolean;
 
-  @OneToMany(() => Todo, todo => todo.user, { cascade: true })
+  @OneToMany(() => Todo, todo => todo.user)
   todos: Todo[];
 
   @BeforeInsert()
