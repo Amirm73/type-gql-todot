@@ -35,8 +35,8 @@ export class Todo extends BaseEntity {
   @JoinTable()
   tags: Tag[];
 
-  @Field(() => [Tag], { description: "performance", nullable: true })
-  get Tags(): Tag[] | null {
-    return this.tags;
-  }
+  // @Field(() => [Tag], { description: "performance", nullable: true })
+  // get Tags(): Tag[] | null {
+  //   return this.tags;
+  // }
 }
