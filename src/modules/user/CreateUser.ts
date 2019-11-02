@@ -6,5 +6,6 @@ export const CreateUserResolver = createSingleResolver(
   "User",
   User,
   RegisterUserInput,
-  User
+  User,
+  true
 );

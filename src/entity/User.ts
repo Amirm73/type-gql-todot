@@ -18,21 +18,15 @@ export class User extends BaseEntity {
   @Field(() => ID)
   id: string;
 
-  @Column("varchar", { length: 255, select: false })
+  @Column("varchar", { length: 255 })
   @Field({ nullable: true })
   name: string;
-  // @Field({ nullable: true })
-  // get title(): String {
-  //   return this.name;
-  // }
 
-  // @Column("text", { unique: true })
   @Column("text")
   @Field({ nullable: true })
   email: string;
 
   @Column("varchar", { length: 255, select: false })
-  @Field()
   password: string;
 
   @Column("bool", { default: false })

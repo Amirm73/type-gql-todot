@@ -5,7 +5,6 @@ import { ConfirmUserResolver } from "../modules/user/ConfirmUser";
 import { ForgotPasswordResolver } from "../modules/user/ForgotPassword";
 import { LoginResolver } from "../modules/user/Login";
 import { LogoutResolver } from "../modules/user/Logout";
-import { RegisterUserResolver } from "../modules/user/RegisterUser";
 import { CreateUserResolver } from "../modules/user/CreateUser";
 import { PictrureUoloadResolver } from "../modules/user/ProfilePicture";
 import { GetAllTodosResolver } from "../modules/todo/GetAllTodos";
@@ -31,7 +30,6 @@ export const createSchema = () =>
       ForgotPasswordResolver,
       LoginResolver,
       LogoutResolver,
-      RegisterUserResolver,
       PictrureUoloadResolver,
       GetAllTodosResolver,
       UpdateTodoResolver,

@@ -14,17 +14,9 @@ export class UpdateTodoTagResolver {
     await getConnection()
       .createQueryBuilder()
       .update(Todo)
-      .set({ tags: tags })
+      .set({ tags })
       .where("id = :id", { id: 1 })
       .execute();
     return Todo.findOne(todoId);
   }
 }
-//@Arg('items', type => [ItemInput]) items: ItemInput[]
-//doc
-// // await getConnection()
-// //     .createQueryBuilder()
-// //     .update(User)
-// //     .set({ firstName: "Timber", lastName: "Saw" })
-// //     .where("id = :id", { id: 1 })
-// //     .execute();

@@ -31,12 +31,6 @@ export class Todo extends BaseEntity {
   user: User;
 
   @ManyToMany(() => Tag, tag => tag.todos)
-  // @Field(() => [Tag], { nullable: true })
   @JoinTable()
   tags: Tag[];
-
-  // @Field(() => [Tag], { description: "performance", nullable: true })
-  // get Tags(): Tag[] | null {
-  //   return this.tags;
-  // }
 }
