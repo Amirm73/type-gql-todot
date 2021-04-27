@@ -17,7 +17,7 @@
     "ioredis": "^4.14.1",
     "nodemailer": "^6.3.1",
     "pg": "^7.7.1",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "reflect-metadata": "^0.1.12",
     "type-graphql": "^0.16.0",
     "typeorm": "^0.2.11",
