@@ -20,7 +20,7 @@
     "redis": "^2.8.0",
     "reflect-metadata": "^0.1.12",
     "type-graphql": "^0.16.0",
-    "typeorm": "^0.2.11",
+    "typeorm": "^0.2.25",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
